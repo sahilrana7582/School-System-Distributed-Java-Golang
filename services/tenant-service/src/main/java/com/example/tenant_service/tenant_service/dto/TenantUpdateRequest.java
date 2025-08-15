@@ -1,6 +1,5 @@
 package com.example.tenant_service.tenant_service.dto;
 
-import com.example.tenant_service.tenant_service.enums.TenantStatus;
 import lombok.*;
 
 @Getter
@@ -11,5 +10,5 @@ import lombok.*;
 public class TenantUpdateRequest {
 
     private String name; // Optional
-    private TenantStatus status; // Optional
+    private String status; // Optional
 }

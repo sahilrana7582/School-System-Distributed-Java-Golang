@@ -1,6 +1,6 @@
 package com.example.tenant_service.tenant_service.service;
 
-import com.example.tenant_service.tenant_service.enums.TenantStatus;
+import com.example.tenant_service.tenant_service.dto.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,10 +18,8 @@ public interface TenantService {
 
     void deleteTenant(UUID tenantId);
 
-    TenantResponse changeTenantStatus(UUID tenantId, TenantStatus status);
 
 
     List<TenantResponse> listAllTenants();
 
-    List<TenantResponse> searchTenantsByName(String namePart);
 }

@@ -1,6 +1,5 @@
 package com.example.tenant_service.tenant_service.dto;
 
-import com.example.tenant_service.tenant_service.enums.TenantStatus;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -15,5 +14,5 @@ public class TenantCreateRequest {
     private String name;
 
     @NotNull(message = "Tenant status is required")
-    private TenantStatus status;
+    private String status;
 }

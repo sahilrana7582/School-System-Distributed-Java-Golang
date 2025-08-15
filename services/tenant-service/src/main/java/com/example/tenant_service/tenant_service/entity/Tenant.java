@@ -1,11 +1,8 @@
 package com.example.tenant_service.tenant_service.entity;
 
 
-import com.example.tenant_service.tenant_service.enums.TenantStatus;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,6 +14,8 @@ import java.util.UUID;
 @Builder
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tenant {
 
     @Id
@@ -28,9 +27,9 @@ public class Tenant {
     private String name;
 
 
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "status")
-    private TenantStatus status;
+    @Column(name = "status", nullable = false)
+    private String status;
+
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

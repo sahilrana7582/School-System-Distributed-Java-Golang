@@ -1,15 +1,14 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE EXTENSION IF NOT EXISTS "citext";
 
-CREATE TYPE tenant_status AS ENUM ('active', 'inactive', 'suspended');
 CREATE TYPE school_board AS ENUM ('CBSE', 'PSEB', 'OTHER');
 
 CREATE TABLE tenants (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     name text NOT NULL,
-    status tenant_status NOT NULL DEFAULT 'active',
-    created_at timestamptz NOT NULL DEFAULT now(),
-    updated_at timestamptz NOT NULL DEFAULT now()
+    status varchar(20) NOT NULL DEFAULT 'active' CHECK (status IN ('active','inactive','suspended')),
+    created_at timestamptz,
+    updated_at timestamptz
 );
 
 CREATE TABLE schools (
@@ -18,8 +17,8 @@ CREATE TABLE schools (
     name text NOT NULL,
     board school_board NOT NULL DEFAULT 'OTHER',
 
-    created_at timestamptz NOT NULL DEFAULT now(),
-    updated_at timestamptz NOT NULL DEFAULT now(),
+    created_at timestamptz,
+    updated_at timestamptz,
     UNIQUE(tenant_id, name)
 );
 
@@ -30,8 +29,8 @@ CREATE TABLE users (
     email citext NOT NULL,
     password text NOT NULL, 
     name text,
-    created_at timestamptz NOT NULL DEFAULT now(),
-    updated_at timestamptz NOT NULL DEFAULT now(),
+    created_at timestamptz,
+    updated_at timestamptz,
     UNIQUE(tenant_id, email)
 );
 
