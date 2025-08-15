@@ -1,4 +1,4 @@
-package com.example.user_service.user_service;
+package com.example.tenant_service.tenant_service;
 
 import com.example.error.CommonErrorsAutoConfig;
 import org.springframework.boot.SpringApplication;
@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import(CommonErrorsAutoConfig.class)
-public class UserServiceApplication {
+public class TenantServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserServiceApplication.class, args);
+		SpringApplication.run(TenantServiceApplication.class, args);
 	}
 
 }
